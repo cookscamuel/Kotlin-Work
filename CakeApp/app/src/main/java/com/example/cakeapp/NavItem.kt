@@ -12,6 +12,10 @@ import androidx.compose.ui.graphics.vector.ImageVector
              that will appear on the nav bar.
  */
 
+// This is a data class that makes pairs of names and icons.
+// Objects created from them are displayed as the clickable pieces
+// in the nav bar. For example, Home + (picture of house) would
+// be an object
 data class NavItem (
 
     val name : String,
