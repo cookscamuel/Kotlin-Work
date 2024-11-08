@@ -3,9 +3,13 @@ package com.example.cakeapp.page
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.ui.Modifier
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -18,7 +22,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.cakeapp.R
@@ -104,9 +110,10 @@ fun HomeScreen(modifier: Modifier = Modifier) {
     // for the main page background. They are also used to
     // format the arrangement of the page elements.
     // These columns are used in every composable.
-    Column (modifier
-        .fillMaxSize()
-        .background(Color(0xFFe7a6ff))){
+    Column (
+        modifier
+            .fillMaxSize()
+            .background(Color(0xFFe7a6ff))){
         Column(
             modifier
                 .fillMaxSize()
@@ -174,9 +181,10 @@ fun HomeScreen(modifier: Modifier = Modifier) {
 @Composable
 fun MenuScreen(modifier: Modifier = Modifier) {
     // Once again, two columns for the background.
-    Column (modifier
-        .fillMaxSize()
-        .background(Color(0xFFe7a6ff))){
+    Column (
+        modifier
+            .fillMaxSize()
+            .background(Color(0xFFe7a6ff))){
         Column(
             modifier
                 .fillMaxSize()
@@ -256,9 +264,10 @@ fun OrderScreen(modifier: Modifier = Modifier) {
     var displayQuantity by remember { mutableStateOf("") }
 
     // background columns
-    Column (Modifier
-        .fillMaxSize()
-        .background(Color(0xFFe7a6ff))){
+    Column (
+        Modifier
+            .fillMaxSize()
+            .background(Color(0xFFe7a6ff))){
         Column(
             modifier
                 .fillMaxSize()
@@ -383,3 +392,154 @@ fun calculateTotal(qty: String): String {
     // text every time the user clicks the button, depending on the
     // quantity that was entered.
 }
+
+
+@Composable
+fun SignUpScreen(modifier: Modifier = Modifier) {
+
+    var name by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
+
+
+    Column (
+        Modifier
+            .fillMaxSize()
+            .background(Color(0xFFe7a6ff))){
+        Column(
+            modifier
+                .fillMaxSize()
+                .padding(6.dp, 6.dp, 6.dp, 88.dp)
+                .background(Color(0xFFffebfe)),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+
+
+            Row(Modifier.padding(25.dp)) {
+
+
+                Image(
+                    modifier = Modifier
+                        .size(80.dp),
+                    painter = painterResource(id = R.drawable.cake4),
+                    contentDescription = "A small cake clip-art."
+                )
+
+
+                Text(
+                    text = "Register",
+                    Modifier.padding(8.dp, 0.dp, 8.dp, 0.dp),
+                    fontSize = 55.sp,
+                    color = Color(0xFF4599ff),
+                    fontWeight = FontWeight.ExtraBold,
+                    fontFamily = FontFamily.Cursive,
+                    fontStyle = FontStyle.Italic,
+                    textAlign = TextAlign.Center,
+                    letterSpacing = 3.sp
+                )
+
+
+            }
+
+
+            Text(
+                text = "Create your own account!",
+                color = Color.Black,
+                fontSize = 20.sp,
+                textAlign = TextAlign.Center,
+                fontWeight = FontWeight.ExtraBold,
+                fontFamily = FontFamily.Serif,
+                modifier = Modifier.padding(18.dp, 0.dp, 18.dp, 0.dp)
+            )
+
+
+            Spacer(modifier = Modifier.height(15.dp))
+
+                Row(modifier.width(300.dp)){
+
+                    Text(
+                        text = "Name",
+                        color = Color.Black,
+                        fontSize = 20.sp,
+                        textAlign = TextAlign.Center,
+                        fontWeight = FontWeight.ExtraBold,
+                        fontFamily = FontFamily.Serif,
+                        lineHeight = 15.sp,
+                        modifier = Modifier.padding(50.dp, 20.dp, 12.dp, 20.dp)
+                    )
+
+                    OutlinedTextField(
+                        value = name,
+                        onValueChange = { name = it },
+                        label = { Text("name",
+                            color = Color.Black,
+                            fontFamily = FontFamily.Serif,
+                            textAlign = TextAlign.Center) },
+                        modifier = Modifier
+                            .width(110.dp)
+                    )
+
+                }
+
+                Row(modifier.width(300.dp)){
+
+                    Text(
+                        text = "Email",
+                        color = Color.Black,
+                        fontSize = 20.sp,
+                        textAlign = TextAlign.Center,
+                        fontWeight = FontWeight.ExtraBold,
+                        fontFamily = FontFamily.Serif,
+                        lineHeight = 15.sp,
+                        modifier = Modifier.padding(50.dp, 20.dp, 12.dp, 20.dp)
+                    )
+
+                    OutlinedTextField(
+                        value = email,
+                        onValueChange = { email = it },
+                        label = { Text("email",
+                            color = Color.Black,
+                            fontFamily = FontFamily.Serif,
+                            textAlign = TextAlign.Center) },
+                        modifier = Modifier
+                            .width(110.dp)
+                    )
+
+                }
+
+                Row(modifier.width(300.dp)){
+
+                    Text(
+                        text = "Password",
+                        color = Color.Black,
+                        fontSize = 20.sp,
+                        textAlign = TextAlign.Center,
+                        fontWeight = FontWeight.ExtraBold,
+                        fontFamily = FontFamily.Serif,
+                        lineHeight = 15.sp,
+                        modifier = Modifier.padding(30.dp, 20.dp, 12.dp, 20.dp)
+                    )
+
+                    OutlinedTextField(
+                        value = password,
+                        onValueChange = { password = it },
+                        label = { Text("password",
+                            color = Color.Black,
+                            fontFamily = FontFamily.Serif,
+                            textAlign = TextAlign.Center) },
+                        modifier = Modifier
+                            .width(110.dp)
+                    )
+
+                }
+
+                Button(onClick = {
+                    // save information
+
+                },
+                    Modifier.padding(20.dp)) {
+                    Text(text = "Sign Up!")
+                }
+            }
+        }
+    }

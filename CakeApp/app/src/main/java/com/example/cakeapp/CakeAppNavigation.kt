@@ -16,8 +16,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.example.cakeapp.page.HomeScreen
+import com.example.cakeapp.page.LoginScreen
 import com.example.cakeapp.page.MenuScreen
 import com.example.cakeapp.page.OrderScreen
+import com.example.cakeapp.page.SignUpScreen
 
 /*
     Author: Samuel Cook

@@ -18,8 +18,10 @@ import com.example.cakeapp.ui.theme.CakeAppTheme
  */
 
 class MainActivity : ComponentActivity() {
+    private lateinit var dbHelper: DBHelper // This line ...
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        dbHelper = DBHelper(this)
         setContent {
             CakeAppTheme {
                 Surface(
